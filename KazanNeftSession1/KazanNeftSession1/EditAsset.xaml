@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KazanNeftSession1.EditAsset">
+    <ContentPage.Content>
+        <StackLayout Padding="4,10,4,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Asset Information" Grid.Row="0" Grid.Column="0"></Label>
+                <Button Grid.Row="0" Grid.Column="1" Text="Back"></Button>
+            </Grid>
+            <Entry Placeholder="Asset Name" />
+            <Grid Padding="4,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Picker x:Name="pickerDept" Title="Department" Grid.Row="0"  Grid.Column="0" Margin="0,10,0,0"></Picker>
+                <Picker x:Name="pickerLocation" Title="Location" Grid.Row="0" Grid.Column="1" Margin="0,10,0,0"></Picker>
+            </Grid>
+            <Grid Padding="4,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Picker x:Name="pickerAssetGroup" Title="Asset Group" Grid.Row="0"  Grid.Column="0" Margin="0,10,0,0"></Picker>
+                <Picker x:Name="pickerAp" Title="Accountable Party" Grid.Row="0" Grid.Column="1" Margin="0,10,0,0"></Picker>
+            </Grid>
+            <Editor x:Name="editorAssetDesc" Placeholder="Enter Asset Description" AutoSize="TextChanges" FontSize="Small">
+            </Editor>
+            <Label Text="Warranty Expiration Date"></Label>
+            <DatePicker></DatePicker>
+            <Label Text="Asset SN: dd/gg/nnnn"></Label>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Submit" Clicked="btnSubmit_Clicked"   Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" Padding="0,0,0,0"></Button>
+                <Button Text="Cancel" Clicked="btnCancel_Clicked"  Grid.Row="0" Grid.Column="1" Margin="0,0,0,0" Padding="0,0,0,0"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

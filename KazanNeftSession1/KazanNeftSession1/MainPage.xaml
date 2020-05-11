@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KazanNeftSession1.MainPage">
+
+    <StackLayout Padding="4,10,4,0">
+        <Label Text="Kazan Neft Session 1" Padding="4,10,0,0" FontSize="Large" TextColor="Black"></Label>
+        <!-- Place new controls here -->
+        <Grid Padding="4,10,40,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Picker Grid.Row="0" Grid.Column="0" 
+                    Title="Department" x:Name="pickerDept" 
+                    ItemsSource="{Binding listDepartment }"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedIndexChanged="pickerDept_SelectedIndexChanged"></Picker>
+            <Picker Grid.Row="0" Grid.Column="1" Title="Asset Group" x:Name="pickerAssetGroup"
+                    ItemsSource="{Binding listAssetGroups}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedIndexChanged="pickerAssetGroup_SelectedIndexChanged"></Picker>
+        </Grid>
+
+        <Label Text="Warranty date range:" Padding="4,0,0,0"></Label>
+        <Grid Padding="4,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Start date"  Grid.Row="0"  Grid.Column="0"></Label>
+            <DatePicker Grid.Row="0"  Grid.Column="0" Margin="0,10,0,0"></DatePicker>
+            <Label Text="End date"  Grid.Row="0"  Grid.Column="1"></Label>
+            <DatePicker Grid.Row="0" Grid.Column="1" Margin="0,10,0,0"></DatePicker>
+        </Grid>
+        <SearchBar Placeholder="Search" Margin="0,0,0,0" x:Name="searchInput" TextChanged="searchInput_TextChanged"/>
+        <Label Text="Asset List:" Padding="4,10,0,0" FontSize="Medium"></Label>
+
+        <ListView x:Name="assetList" Margin="10" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,0,20,0">
+                                <Label IsVisible="True" Text="{Binding ID}" HorizontalOptions="FillAndExpand" TextColor="Black"></Label>
+                                <Label Text="{Binding AssetName}" FontSize="Medium" HorizontalOptions="FillAndExpand" TextColor="Black"></Label>
+                                <Label Text="{Binding DepartmentName}" HorizontalOptions="FillAndExpand" TextColor="Black"></Label>
+                                <Label Text="{Binding AssetSN}" HorizontalOptions="FillAndExpand" TextColor="Black"></Label>
+                            </StackLayout>
+                            <ImageButton 
+                                x:Name="btnEdit"
+                                Clicked="btnEdit_click"
+                                Source="editIcon.png"
+                                HeightRequest="30"
+                                WidthRequest="30"
+                                BackgroundColor="Transparent">
+                            </ImageButton>
+                            <ImageButton 
+                                x:Name="btnMove"
+                                Clicked="btnMove_click"
+                                Source="moveIcon.png"
+                                HeightRequest="30"
+                                WidthRequest="30"
+                                BackgroundColor="Transparent">
+                            </ImageButton>
+                            <ImageButton 
+                                x:Name="btnHistory"
+                                Clicked="btnHistory_Clicked"
+                                Source="historyIcon.png"
+                                HeightRequest="30"
+                                WidthRequest="30"
+                                BackgroundColor="Transparent">
+                            </ImageButton>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Add New Asset" Clicked="btnAdd_Clicked"></Button>
+    </StackLayout>
+</ContentPage>
